@@ -8,13 +8,13 @@ html, body
 
 body {
   font-family: Arial, Helvetica, Verdana, Sans-serif;
-  font-size: 12px;color: #666666;
-  background: #171F26;
+  font-size: 12px;color: #d0d2d3;
+  background: #ffffff;
 }
 
-#main_nav{ width:1024px; background:#171F26; height:400px;}
-#main_container{ width: 1024px; margin: auto; }	
-
+#main_container{ width: 100%; margin: auto; }	
+#main_nav{ width:100%; background:#171F26; height:700px;}
+#main_content{ width: 100%; margin: auto;height:900px; }	
  
-#footer { clear: both;background: orange;height: 66px;}
-	
+#footer { clear: both;background: #171F26;height: 200px;}
+#footer .h2{ color: #ffffff}
