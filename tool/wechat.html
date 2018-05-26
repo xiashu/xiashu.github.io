@@ -1,0 +1,117 @@
+<!DOCTYPE html><html><head><title>Tabbar 导航</title><meta charset='utf-8'><link href='https://dn-maxiang.qbox.me/res-min/themes/marxico.css' rel='stylesheet'><style></style></head><body><div id='preview-contents' class='note-content'>
+                        
+                    
+
+
+
+<h3 id="tabbar-导航">Tabbar 导航</h3>
+
+<pre class="prettyprint hljs-dark"><code class="hljs xquery"><div class="hljs-line"><span class="hljs-string">"tabBar"</span>: {
+</div><div class="hljs-line">  <span class="hljs-string">"color"</span>: <span class="hljs-string">"#74777e"</span>,
+</div><div class="hljs-line">  <span class="hljs-string">"selectedColor"</span>: <span class="hljs-string">"#2cc17B"</span>,
+</div><div class="hljs-line">  <span class="hljs-string">"borderStyle"</span>: <span class="hljs-string">"white"</span>,
+</div><div class="hljs-line">  <span class="hljs-string">"backgroundColor"</span>: <span class="hljs-string">"#fff"</span>,
+</div><div class="hljs-line">  <span class="hljs-string">"list"</span>: [
+</div><div class="hljs-line">    {
+</div><div class="hljs-line">      <span class="hljs-string">"pagePath"</span>: <span class="hljs-string">"pages/index/index"</span>,
+</div><div class="hljs-line">      <span class="hljs-string">"iconPath"</span>: <span class="hljs-string">"images/tab_index.png"</span>,
+</div><div class="hljs-line">      <span class="hljs-string">"selectedIconPath"</span>: <span class="hljs-string">"images/tab_index_s.png"</span>,
+</div><div class="hljs-line">      <span class="hljs-string">"text"</span>: <span class="hljs-string">"主页"</span>
+</div><div class="hljs-line">    },
+</div><div class="hljs-line">    {
+</div><div class="hljs-line">      <span class="hljs-string">"pagePath"</span>: <span class="hljs-string">"pages/anli/anli"</span>,
+</div><div class="hljs-line">      <span class="hljs-string">"iconPath"</span>: <span class="hljs-string">"images/eff.png"</span>,
+</div><div class="hljs-line">      <span class="hljs-string">"selectedIconPath"</span>: <span class="hljs-string">"images/eff_select.png"</span>,
+</div><div class="hljs-line">      <span class="hljs-string">"text"</span>: <span class="hljs-string">"效果图"</span>
+</div><div class="hljs-line">    },
+</div><div class="hljs-line">    {
+</div><div class="hljs-line">        <span class="hljs-string">"pagePath"</span>: <span class="hljs-string">"pages/work/work"</span>,
+</div><div class="hljs-line">        <span class="hljs-string">"iconPath"</span>: <span class="hljs-string">"images/tab_shi_n.png"</span>,
+</div><div class="hljs-line">        <span class="hljs-string">"selectedIconPath"</span>: <span class="hljs-string">"images/tab_shi_p.png"</span>,
+</div><div class="hljs-line">        <span class="hljs-string">"text"</span>: <span class="hljs-string">"施工图"</span>
+</div><div class="hljs-line">    }
+</div><div class="hljs-line">  ]
+</div><div class="hljs-line">}
+</div></code></pre>
+
+<h3 id="picker">picker</h3>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="hljs stata"><div class="hljs-line">&lt;picker  value =<span class="hljs-string">"{{index}}"</span>  <span class="hljs-keyword">range</span>=<span class="hljs-string">"{{worklist}}"</span> <span class="hljs-keyword">range</span>-key=<span class="hljs-string">"label"</span> 
+</div><div class="hljs-line">        bindchange=<span class="hljs-string">"bindPickerChange"</span>&gt;
+</div><div class="hljs-line">        &lt;<span class="hljs-keyword">view</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">"picker"</span>&gt;
+</div><div class="hljs-line">           {{worklist[index].<span class="hljs-keyword">label</span>}}
+</div><div class="hljs-line">        &lt;/<span class="hljs-keyword">view</span>&gt;
+</div><div class="hljs-line">  &lt;/picker&gt;
+</div><div class="hljs-line"><wbr>
+</div><div class="hljs-line">   bindPickerChange:function(<span class="hljs-keyword">e</span>){
+</div><div class="hljs-line">     <span class="hljs-keyword">const</span> val =  <span class="hljs-keyword">e</span>.detail.value;
+</div><div class="hljs-line">     console.<span class="hljs-built_in">log</span>( <span class="hljs-keyword">e</span>.detail.value)
+</div><div class="hljs-line">   }
+</div></code></pre>
+
+<h3 id="下拉刷新">下拉刷新</h3>
+
+<pre class="prettyprint hljs-dark"><code class="hljs django"><div class="hljs-line"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span>
+</span></div><div class="hljs-line"><span class="hljs-tag">&lt;<span class="hljs-name">scroll-view</span> <span class="hljs-attr">scroll-top</span>=<span class="hljs-string">"</span></span><span class="hljs-template-variable">{{scrollTop}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span> <span class="hljs-attr">scroll-y</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"height:</span></span></span><span class="hljs-template-variable">{{scrollHeight}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">px;"</span> 
+</span></span></div><div class="hljs-line">    <span class="hljs-attr">class</span>=<span class="hljs-string">"list"</span> <span class="hljs-attr">bindscrolltolower</span>=<span class="hljs-string">"bindDownLoad"</span> <span class="hljs-attr">bindscroll</span>=<span class="hljs-string">"scroll"</span> <span class="hljs-attr">bindscrolltoupper</span>=<span class="hljs-string">"refresh"</span>&gt;
+</div><div class="hljs-line">    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"item"</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">"</span></span><span class="hljs-template-variable">{{list}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span>&gt;</span>
+</span></div><div class="hljs-line">        <span class="hljs-tag">&lt;<span class="hljs-name">image</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"img"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"</span></span><span class="hljs-template-variable">{{item.pic_url}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">image</span>&gt;</span>
+</span></div><div class="hljs-line">        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text"</span>&gt;</span>
+</div><div class="hljs-line">            <span class="hljs-tag">&lt;<span class="hljs-name">text</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title"</span>&gt;</span><span class="hljs-template-variable">{{item.name}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+</span></div><div class="hljs-line">            <span class="hljs-tag">&lt;<span class="hljs-name">text</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"description"</span>&gt;</span><span class="hljs-template-variable">{{item.short_description}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+</span></div><div class="hljs-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</div><div class="hljs-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</div><div class="hljs-line"><span class="hljs-tag">&lt;/<span class="hljs-name">scroll-view</span>&gt;</span>
+</div><div class="hljs-line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"body-view"</span>&gt;</span>
+</div><div class="hljs-line">    <span class="hljs-tag">&lt;<span class="hljs-name">loading</span> <span class="hljs-attr">hidden</span>=<span class="hljs-string">"</span></span><span class="hljs-template-variable">{{hidden}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">"loadingChange"</span>&gt;</span>
+</span></div><div class="hljs-line">        加载中...
+</div><div class="hljs-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">loading</span>&gt;</span>
+</div><div class="hljs-line"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</div></code></pre>
+
+
+
+<h3 id="跳转导航">跳转导航</h3>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="hljs actionscript"><div class="hljs-line">      handSelect:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span></span>{
+</div><div class="hljs-line"><wbr>
+</div><div class="hljs-line">     <span class="hljs-keyword">var</span> id =  e.currentTarget.dataset.id;
+</div><div class="hljs-line">     <span class="hljs-comment">//跳转 </span>
+</div><div class="hljs-line"><wbr>
+</div><div class="hljs-line">     wx.navigateTo({
+</div><div class="hljs-line">        url: <span class="hljs-string">'../master/master?id='</span>+id
+</div><div class="hljs-line">      })
+</div><div class="hljs-line"><wbr>
+</div><div class="hljs-line">  }
+</div><div class="hljs-line">   <span class="hljs-comment">//要用相对路径的，pages在app.json需要定义</span>
+</div></code></pre>
+
+
+
+<h3 id="城市选择">城市选择</h3>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="hljs dust"><div class="hljs-line"><span class="xml">// 使用region 模式可以用于选择省份城市
+</span></div><div class="hljs-line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"section"</span>&gt;</span>
+</div><div class="hljs-line">  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"section__title"</span>&gt;</span>省市区选择器<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</div><div class="hljs-line">  <span class="hljs-tag">&lt;<span class="hljs-name">picker</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">"region"</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">"bindRegionChange"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"</span></span><span class="hljs-template-variable">{{region}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">}"</span> <span class="hljs-attr">custom-item</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{{customItem}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">}"</span>&gt;</span>
+</span></div><div class="hljs-line">    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"picker"</span>&gt;</span>
+</div><div class="hljs-line">      当前选择：<span class="hljs-template-variable">{{region[0]}</span><span class="xml">}，</span><span class="hljs-template-variable">{{region[1]}</span><span class="xml">}，</span><span class="hljs-template-variable">{{region[2]}</span><span class="xml">}
+</span></div><div class="hljs-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</div><div class="hljs-line">  <span class="hljs-tag">&lt;/<span class="hljs-name">picker</span>&gt;</span>
+</div><div class="hljs-line"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</div><div class="hljs-line"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</div><div class="hljs-line"><wbr>
+</div><div class="hljs-line">bindRegionChange: function (e) <span class="hljs-template-variable">{
+</span></div><div class="hljs-line">    console.log('picker发送选择改变，携带值为', e.detail.value)
+</div><div class="hljs-line">    this.setData({
+</div><div class="hljs-line">      region: e.detail.value
+</div><div class="hljs-line">    }<span class="xml">)
+</span></div><div class="hljs-line">  }
+</div><div class="hljs-line">
+</div></code></pre></div></body></html>
